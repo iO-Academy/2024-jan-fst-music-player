@@ -1,7 +1,5 @@
 <?php
 
-namespace songClass;
-
 class Song
 {
     private int $id;
