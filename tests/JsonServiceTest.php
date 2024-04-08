@@ -1,9 +1,9 @@
 <?php
-require_once '../JsonService/JsonService.php';
 
 use PHPUnit\Framework\TestCase;
+use CodersCanine\JsonService\JsonService;
 
-class JsonServiceTests extends TestCase
+class JsonServiceTest extends TestCase
 {
 public function testJsonService_success()
 {

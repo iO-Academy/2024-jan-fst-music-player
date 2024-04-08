@@ -1,7 +1,7 @@
 {
   "autoload": {
     "psr-4": {
-      "Coders.Canine\\":"src/"
+      "CodersCanine\\":"src/"
     }
   },
   "require-dev": {
