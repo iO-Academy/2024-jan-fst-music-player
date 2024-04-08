@@ -1,5 +1,6 @@
 <?php
 
+namespace src\songClass;
 class Song
 {
     private int $id;

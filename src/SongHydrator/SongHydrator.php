@@ -1,7 +1,7 @@
 <?php
 
 namespace src\SongHydrator;
-use Song;
+use src\songClass\Song;
 
 class SongHydrator
 {
