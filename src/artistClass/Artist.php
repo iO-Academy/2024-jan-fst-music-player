@@ -1,5 +1,6 @@
 <?php
 
+namespace src\artistClass;
 class Artist
 {
     private int $id;

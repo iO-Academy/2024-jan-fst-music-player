@@ -2,6 +2,7 @@
 require_once '../JsonService/JsonService.php';
 
 use PHPUnit\Framework\TestCase;
+use src\JsonService\JsonService;
 
 class JsonServiceTests extends TestCase
 {

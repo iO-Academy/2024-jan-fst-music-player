@@ -1,5 +1,7 @@
 <?php
 
+use src\artistClass\Artist;
+
 class SongHydrator
 {
     private static PDO $db;
