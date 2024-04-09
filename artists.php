@@ -12,4 +12,4 @@ $JsonService = new JsonService();
 
 $allArtistsArray = $ArtistService->createArtistProfile($AlbumService);
 
-return $JsonService->convertArrayToJson($allArtistsArray);
+echo $JsonService->convertArrayToJson($allArtistsArray);
