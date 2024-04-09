@@ -2,9 +2,11 @@
 
 namespace CodersCanine\ArtistService;
 
+use src\AlbumHydrator\AlbumHydrator;
+
 class ArtistService
 {
- public function createArtistProfile($albumHydrator, $artistId)
+ public function createArtistProfile($ArtistHydrator, $AlbumHydrator)
  {
      $artistArray = [];
      $artists = ArtistHydrator::getArtists();
