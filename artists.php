@@ -11,18 +11,26 @@ use CodersCanine\ArtistHydrator\ArtistHydrator;
 use CodersCanine\AlbumHydrator\AlbumHydrator;
 use CodersCanine\SongHydrator\SongHydrator;
 header("Access-Control-Allow-Origin: *");
-$db = new DatabaseConnector();
-$db = $db->connect();
 
-SongHydrator::setDb($db);
-AlbumHydrator::setDb($db);
-ArtistHydrator::setDb($db);
+try {
+    $db = new DatabaseConnector();
+    $db = $db->connect();
 
-$ArtistService = new ArtistService();
-$AlbumService = new AlbumService();
-$SongService = new SongService();
-$JsonService = new JsonService();
+    SongHydrator::setDb($db);
+    AlbumHydrator::setDb($db);
+    ArtistHydrator::setDb($db);
 
-$allArtistsArray = $ArtistService->createArtistProfile($AlbumService, $SongService);
+    $ArtistService = new ArtistService();
+    $AlbumService = new AlbumService();
+    $SongService = new SongService();
+    $JsonService = new JsonService();
 
-echo $JsonService->convertArrayToJson($allArtistsArray);
+    $allArtistsArray = $ArtistService->createArtistProfile($AlbumService, $SongService);
+
+    echo $JsonService->convertArrayToJson($allArtistsArray);
+}
+catch (Throwable) {
+    http_response_code(500);
+    $errorMessage = ["message" => "Unexpected error"];
+    echo json_encode($errorMessage);
+}
