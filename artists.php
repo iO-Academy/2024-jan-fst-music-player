@@ -10,6 +10,7 @@ use CodersCanine\DatabaseConnector\DatabaseConnector;
 use CodersCanine\ArtistHydrator\ArtistHydrator;
 use CodersCanine\AlbumHydrator\AlbumHydrator;
 use CodersCanine\SongHydrator\SongHydrator;
+
 header("Access-Control-Allow-Origin: *");
 
 try {
@@ -28,8 +29,7 @@ try {
     $allArtistsArray = $ArtistService->createArtistProfile($AlbumService, $SongService);
 
     echo $JsonService->convertArrayToJson($allArtistsArray);
-}
-catch (Throwable) {
+} catch (Throwable) {
     http_response_code(500);
     $errorMessage = ["message" => "Unexpected error"];
     echo json_encode($errorMessage);
