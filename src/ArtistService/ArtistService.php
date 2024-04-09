@@ -6,7 +6,7 @@ use CodersCanine\ArtistHydrator\ArtistHydrator;
 
 class ArtistService
 {
- public function createArtistProfile($AlbumService, $SongService) : array
+ public function createArtistProfile(AlbumService $albumService, SongService $songService) : array
  {
      $artistArray = [];
      $artistProfileArray = [];
