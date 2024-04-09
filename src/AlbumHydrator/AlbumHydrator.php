@@ -1,6 +1,6 @@
 <?php
 
-namespace src\AlbumHydrator;
+namespace CodersCanine\AlbumHydrator;
 
 use AlbumHydrator\Album;
 use AlbumHydrator\PDO;

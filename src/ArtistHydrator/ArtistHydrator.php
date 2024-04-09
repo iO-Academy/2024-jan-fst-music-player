@@ -1,5 +1,6 @@
 <?php
 
+namespace CodersCanine\ArtistHydrator;
 use src\artistClass\Artist;
 
 class ArtistHydrator

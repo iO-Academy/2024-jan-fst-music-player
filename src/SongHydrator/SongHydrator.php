@@ -1,6 +1,6 @@
 <?php
 
-namespace src\SongHydrator;
+namespace CodersCanine\SongHydrator;
 use src\songClass\Song;
 
 class SongHydrator
