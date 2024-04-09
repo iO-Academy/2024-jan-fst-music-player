@@ -7,9 +7,9 @@ use src\SongService;
 
 class AlbumService
 {
-    public function createAlbumProfile (AlbumHydrator $albumHydrator, int $artistId, SongService $songService) : array
+    public function createAlbumProfile (int $artistId, SongService $songService) : array
     {
-        $albumsByArtist = $albumHydrator::getAlbumsByArtist($artistId);
+        $albumsByArtist = AlbumHydrator::getAlbumsByArtist($artistId);
         foreach ($albumsByArtist as $album)
         {
             $songs = $songService->getSongs();
