@@ -2,7 +2,7 @@
 
 namespace CodersCanine\SongService;
 
-use src\SongHydrator\SongHydrator;
+use CodersCanine\SongHydrator\SongHydrator;
 
 class SongService
 {
