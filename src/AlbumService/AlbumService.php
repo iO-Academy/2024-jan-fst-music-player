@@ -10,6 +10,7 @@ class AlbumService
     public function createAlbumProfile (int $artistId, SongService $songService): array
     {
         $albumsByArtist = AlbumHydrator::getAlbumsByArtist($artistId);
+        $albumProfileForArtist = [];
         foreach ($albumsByArtist as $album)
         {
             $songs = $songService->getTrackList($album->getId());
@@ -17,7 +18,8 @@ class AlbumService
                 'name' => $album->getName(),
                 'songs' => $songs,
                 'artwork_url' => $album->getArtwork()];
+            $albumProfileForArtist[] = $albumProfile;
         }
-        return $albumProfile;
+        return $albumProfileForArtist;
     }
 }
