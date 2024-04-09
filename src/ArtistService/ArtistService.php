@@ -2,17 +2,18 @@
 
 namespace CodersCanine\ArtistService;
 
-use src\AlbumHydrator\AlbumHydrator;
+use CodersCanine\ArtistHydrator\ArtistHydrator;
+use CodersCanine\AlbumService\AlbumService;
 
 class ArtistService
 {
- public function createArtistProfile($ArtistHydrator, $AlbumHydrator)
+ public function createArtistProfile(AlbumService $albumService)
  {
      $artistArray = [];
      $artists = ArtistHydrator::getArtists();
      foreach ($artists as $artist)
      {
-       $artistToAdd = AlbumService::createAlbumProfile($artist->getId());
+       $artistToAdd = $albumService->createAlbumProfile($artist->getId());
         $artistArray += [$artistToAdd];
      }
      return $artistArray;

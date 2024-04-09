@@ -2,9 +2,7 @@
 
 namespace CodersCanine\AlbumHydrator;
 
-use AlbumHydrator\Album;
-use AlbumHydrator\PDO;
-use AlbumHydrator\SongHydrator;
+use CodersCanine\Album\Album;
 
 class AlbumHydrator
 {

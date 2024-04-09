@@ -2,8 +2,8 @@
 
 namespace CodersCanine\AlbumService;
 
-use src\AlbumHydrator;
-use src\SongService;
+use CodersCanine\AlbumHydrator\AlbumHydrator;
+use CodersCanine\SongService\SongService;
 
 class AlbumService
 {
