@@ -8,9 +8,9 @@ use PDO;
 class AlbumHydrator
 {
     private static PDO $db;
-    public static function getAlbumsByArtist ($artistId): array
+    public static function getAlbumsByArtist (int $artistId): array
     {
-        $query = AlbumHydrator::$db->prepare('SELECT `id`, `album_name` AS `name`, `artwork_url` AS `artwork`, `artist_id` AS `artistId` FROM `albums` WHERE `id` = ?');
+        $query = AlbumHydrator::$db->prepare('SELECT `id`, `album_name` AS `name`, `artwork_url` AS `artwork`, `artist_id` AS `artistId` FROM `albums` WHERE `artist_id` = ?');
         $query->execute([$artistId]);
         $query->setFetchMode(PDO::FETCH_CLASS, Album::class);
         return $query->fetchAll();

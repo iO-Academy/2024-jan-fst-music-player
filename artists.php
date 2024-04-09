@@ -11,18 +11,34 @@ use CodersCanine\ArtistHydrator\ArtistHydrator;
 use CodersCanine\AlbumHydrator\AlbumHydrator;
 use CodersCanine\SongHydrator\SongHydrator;
 
-$db = new DatabaseConnector();
-$db = $db->connect();
+header("Access-Control-Allow-Origin: *");
 
-SongHydrator::setDb($db);
-AlbumHydrator::setDb($db);
-ArtistHydrator::setDb($db);
+try {
+    $db = new DatabaseConnector();
+    $db = $db->connect();
 
-$ArtistService = new ArtistService();
-$AlbumService = new AlbumService();
-$SongService = new SongService();
-$JsonService = new JsonService();
+    SongHydrator::setDb($db);
+    AlbumHydrator::setDb($db);
+    ArtistHydrator::setDb($db);
 
-$allArtistsArray = $ArtistService->createArtistProfile($AlbumService, $SongService);
+    $artistService = new ArtistService();
+    $albumService = new AlbumService();
+    $songService = new SongService();
+    $jsonService = new JsonService();
 
-echo $JsonService->convertArrayToJson($allArtistsArray);
+    isset($_GET['name']) ?  $artistName = $_GET['name'] : $artistName = '%';
+
+    $allArtistsArray = $artistService->createArtistProfile($albumService, $songService, $artistName);
+
+    if (count($allArtistsArray) === 0) {
+        http_response_code(400);
+        $errorMessage = ["message" => "Unknown artist name"];
+    } else {
+        echo $jsonService->convertArrayToJson($allArtistsArray);
+    }
+
+} catch (Throwable) {
+    http_response_code(500);
+    $errorMessage = ["message" => "Unexpected error"];
+    echo json_encode($errorMessage);
+}
