@@ -6,14 +6,14 @@ use CodersCanine\ArtistHydrator\ArtistHydrator;
 
 class ArtistService
 {
- public function createArtistProfile(AlbumService $albumService, SongService $songService) : array
+ public function createArtistProfile($albumService, $songService) : array
  {
      $artistArray = [];
      $artistProfileArray = [];
      $artists = ArtistHydrator::getArtists();
      foreach ($artists as $artist)
      {
-       $albumToAdd = $AlbumService->createAlbumProfile($artist->getId(), $SongService);
+       $albumToAdd = $albumService->createAlbumProfile($artist->getId(), $songService);
        $artistProfileArray += ['name' => $artist->getName(), 'albums' =>$albumToAdd];
        $artistArray = ['artists' => $artistProfileArray];
      }

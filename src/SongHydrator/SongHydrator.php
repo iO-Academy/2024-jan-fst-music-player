@@ -2,6 +2,7 @@
 
 namespace CodersCanine\SongHydrator;
 use CodersCanine\Song\Song;
+use PDO;
 
 class SongHydrator
 {
@@ -9,7 +10,7 @@ class SongHydrator
 
     public static function getSongsByAlbum($albumId): array
     {
-        $query = SongHydrator::$db->prepare('SELECT `id`, `song_name`, `length`, `album_id` FROM `music` WHERE `album_id` = ?');
+        $query = SongHydrator::$db->prepare('SELECT `id`, `song_name` AS `name`, `length`, `album_id` AS `albumId` FROM `songs` WHERE `album_id` = ?');
         $query->execute([$albumId]);
         $query->setFetchMode(PDO::FETCH_CLASS, Song::class);
         return $query->fetchAll();
