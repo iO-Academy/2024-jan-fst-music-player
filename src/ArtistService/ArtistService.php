@@ -8,11 +8,11 @@ use CodersCanine\SongService\SongService;
 
 class ArtistService
 {
- public function createArtistProfile(AlbumService $albumService, SongService $songService): array
+ public function createArtistProfile(AlbumService $albumService, SongService $songService, string $artistName): array
  {
      $artistArray = [];
      $artistProfileArray = [];
-     $artists = ArtistHydrator::getArtists();
+     $artists = ArtistHydrator::getArtists($artistName);
      foreach ($artists as $artist) {
        $artistAlbums = $albumService->createAlbumProfile($artist->getId(), $songService);
        $artistProfileArray[] = ['name' => $artist->getName(), 'albums' => $artistAlbums];

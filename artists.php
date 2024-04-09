@@ -26,9 +26,21 @@ try {
     $SongService = new SongService();
     $JsonService = new JsonService();
 
-    $allArtistsArray = $ArtistService->createArtistProfile($AlbumService, $SongService);
+    if (isset($_GET['name'])) {
+        $artistName = $_GET['name'];
+    } else {
+        $artistName = '%';
+    }
 
-    echo $JsonService->convertArrayToJson($allArtistsArray);
+    $allArtistsArray = $ArtistService->createArtistProfile($AlbumService, $SongService, $artistName);
+
+    if (count($allArtistsArray) === 0) {
+        http_response_code(400);
+        $errorMessage = ["message" => "Unknown artist name"];
+    } else {
+        echo $JsonService->convertArrayToJson($allArtistsArray);
+    }
+
 } catch (Throwable) {
     http_response_code(500);
     $errorMessage = ["message" => "Unexpected error"];
