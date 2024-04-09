@@ -3,15 +3,16 @@
 namespace CodersCanine\AlbumService;
 
 use src\AlbumHydrator;
+use src\SongService;
 
 class AlbumService
 {
-    public function createAlbumProfile (int $artistId) : array
+    public function createAlbumProfile (AlbumHydrator $albumHydrator, int $artistId, SongService $songService) : array
     {
-        $albumsByArtist = AlbumHydrator::getAlbumsByArtist($artistId);
+        $albumsByArtist = $albumHydrator::getAlbumsByArtist($artistId);
         foreach ($albumsByArtist as $album)
         {
-            $songs = SongService->getSongs();
+            $songs = $songService->getSongs();
             $albumProfile = [
                 'name' => $album->getName(),
                 'songs' => $songs,
