@@ -10,7 +10,6 @@ class Song
     private bool $is_fav;
     private int $albumId;
 
-
     public function getId(): int
     {
         return $this->id;
