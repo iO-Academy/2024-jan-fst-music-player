@@ -7,12 +7,12 @@ use CodersCanine\SongService\SongService;
 
 class AlbumService
 {
-    public function createAlbumProfile (int $artistId, SongService $songService) : array
+    public function createAlbumProfile (int $artistId, SongService $songService): array
     {
         $albumsByArtist = AlbumHydrator::getAlbumsByArtist($artistId);
         foreach ($albumsByArtist as $album)
         {
-            $songs = $songService->getSongs();
+            $songs = $songService->getTrackList($album->getId());
             $albumProfile = [
                 'name' => $album->getName(),
                 'songs' => $songs,
