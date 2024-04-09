@@ -14,7 +14,7 @@ class ArtistService
      foreach ($artists as $artist)
      {
        $albumToAdd = $albumService->createAlbumProfile($artist->getId(), $songService);
-       $artistProfileArray += ['name' => $artist->getName(), 'albums' =>$albumToAdd];
+       $artistProfileArray[] = ['name' => $artist->getName(), 'albums' =>$albumToAdd];
        $artistArray = ['artists' => $artistProfileArray];
      }
      return $artistArray;

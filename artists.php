@@ -10,7 +10,7 @@ use CodersCanine\DatabaseConnector\DatabaseConnector;
 use CodersCanine\ArtistHydrator\ArtistHydrator;
 use CodersCanine\AlbumHydrator\AlbumHydrator;
 use CodersCanine\SongHydrator\SongHydrator;
-
+header("Access-Control-Allow-Origin: *");
 $db = new DatabaseConnector();
 $db = $db->connect();
 
