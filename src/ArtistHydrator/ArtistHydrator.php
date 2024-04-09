@@ -7,7 +7,7 @@ use PDO;
 class ArtistHydrator
 {
     private static PDO $db;
-    public static function getArtists ($artistName): array
+    public static function getArtists (string $artistName): array
     {
         $query = ArtistHydrator::$db->prepare('SELECT `id`, `artist_name` AS `name` FROM `artists`
                                                 WHERE `artist_name` LIKE ?');

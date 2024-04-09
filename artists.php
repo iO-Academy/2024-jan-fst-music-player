@@ -21,24 +21,20 @@ try {
     AlbumHydrator::setDb($db);
     ArtistHydrator::setDb($db);
 
-    $ArtistService = new ArtistService();
-    $AlbumService = new AlbumService();
-    $SongService = new SongService();
-    $JsonService = new JsonService();
+    $artistService = new ArtistService();
+    $albumService = new AlbumService();
+    $songService = new SongService();
+    $jsonService = new JsonService();
 
-    if (isset($_GET['name'])) {
-        $artistName = $_GET['name'];
-    } else {
-        $artistName = '%';
-    }
+    isset($_GET['name']) ?  $artistName = $_GET['name'] : $artistName = '%';
 
-    $allArtistsArray = $ArtistService->createArtistProfile($AlbumService, $SongService, $artistName);
+    $allArtistsArray = $artistService->createArtistProfile($albumService, $songService, $artistName);
 
     if (count($allArtistsArray) === 0) {
         http_response_code(400);
         $errorMessage = ["message" => "Unknown artist name"];
     } else {
-        echo $JsonService->convertArrayToJson($allArtistsArray);
+        echo $jsonService->convertArrayToJson($allArtistsArray);
     }
 
 } catch (Throwable) {
