@@ -1,6 +1,6 @@
 <?php
 
-namespace src\songClass;
+namespace CodersCanine\Song;
 class Song
 {
     private int $id;

@@ -1,6 +1,6 @@
 <?php
 
-namespace src\albumClass;
+namespace CodersCanine\Album;
 class Album
 {
     private int $id;

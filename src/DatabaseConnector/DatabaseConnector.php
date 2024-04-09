@@ -1,6 +1,6 @@
 <?php
 
-namespace src\DatabaseConnector;
+namespace CodersCanine\DatabaseConnector;
 class DatabaseConnector
 {
     public function connect(): PDO

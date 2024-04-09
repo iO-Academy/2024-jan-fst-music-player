@@ -1,6 +1,6 @@
 <?php
 
-namespace src\AlbumHydrator;
+namespace CodersCanine\AlbumHydrator;
 
 use AlbumHydrator\Album;
 use AlbumHydrator\PDO;
@@ -11,10 +11,10 @@ class AlbumHydrator
     private static PDO $db;
     public static function getAlbumsByArtist ($artistId): array
     {
-        $query = SongHydrator::$db->prepare('SELECT `id`, `song_name`, `length`, `album_id` FROM `music` WHERE `id` = ?');
+        $query = AlbumHydrator::$db->prepare('SELECT `id`, `album_name`, `artwork_id`, `artist_id` FROM `music` WHERE `id` = ?');
         $query->execute([$artistId]);
         $query->setFetchMode(PDO::FETCH_CLASS, Album::class);
-        return $query->fetchAll;
+        return $query->fetchAll();
     }
 
     public static function setDb(PDO $db): void
