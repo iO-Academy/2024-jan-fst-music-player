@@ -11,7 +11,7 @@ class ArtistHydrator
         $query = ArtistHydrator::$db->prepare('SELECT `id`, `artist_name` FROM `music`');
         $query->execute();
         $query->setFetchMode(PDO::FETCH_CLASS, Artist::class);
-        return $query->fetchAll;
+        return $query->fetchAll();
     }
 
     public static function setDb(PDO $db): void

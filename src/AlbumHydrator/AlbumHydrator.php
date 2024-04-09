@@ -14,7 +14,7 @@ class AlbumHydrator
         $query = AlbumHydrator::$db->prepare('SELECT `id`, `album_name`, `artwork_id`, `artist_id` FROM `music` WHERE `id` = ?');
         $query->execute([$artistId]);
         $query->setFetchMode(PDO::FETCH_CLASS, Album::class);
-        return $query->fetchAll;
+        return $query->fetchAll();
     }
 
     public static function setDb(PDO $db): void
