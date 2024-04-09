@@ -10,6 +10,6 @@ $AlbumService = new AlbumService();
 $SongService = new SongService();
 $JsonService = new JsonService();
 
-$allArtistsArray = $ArtistService->createArtistProfile($AlbumService);
+$allArtistsArray = $ArtistService->createArtistProfile($AlbumService, $SongService);
 
 echo $JsonService->convertArrayToJson($allArtistsArray);
