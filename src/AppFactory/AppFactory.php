@@ -20,6 +20,7 @@ class AppFactory
     private AlbumService $albumService;
     private SongService $songService;
     private JsonService $jsonService;
+
     public function createSetUp(): void
     {
         try {
