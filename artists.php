@@ -8,14 +8,13 @@ use CodersCanine\Factory\Factory;
 $factory = new Factory();
 $factory->createSetUp();
 
-isset($_GET['name']) ?  $artistName = $_GET['name'] : $artistName = '%';
-
-$allArtistsArray = $factory->getArtistService()->createArtistProfile($factory->getAlbumService(), $factory->getSongService(), $artistName);
-
-if (count($allArtistsArray) === 0) {
+try {
+    $allArtistsArray = $factory->getArtistService()->createAllArtistProfile($factory->getAlbumService(), $factory->getSongService());
+    echo $factory->getJsonService()->convertArrayToJson($allArtistsArray);
+} catch (Throwable $e) {
     http_response_code(400);
     $errorMessage = ["message" => "Unknown artist name"];
-} else {
-    echo $factory->getJsonService()->convertArrayToJson($allArtistsArray);
+    echo $e->getMessage();
 }
+
 

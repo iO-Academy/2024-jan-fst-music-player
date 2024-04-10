@@ -7,10 +7,10 @@ use PDO;
 class ArtistHydrator
 {
     private static PDO $db;
-    public static function getArtists (string $artistName): array
+    public static function getArtists (): array
     {
-        $query = ArtistHydrator::$db->prepare('SELECT `id`, `artist_name` AS `name` FROM `artists` WHERE `artist_name` LIKE ?');
-        $query->execute([$artistName]);
+        $query = ArtistHydrator::$db->prepare('SELECT `id`, `artist_name` AS `name` FROM `artists`');
+        $query->execute();
         $query->setFetchMode(PDO::FETCH_CLASS, Artist::class);
         return $query->fetchAll();
     }
@@ -19,11 +19,17 @@ class ArtistHydrator
     {
         self::$db = $db;
     }
-    public static function getArtist (string $artistName): array
+    public static function getArtist (string $artistName): Artist
     {
-        $query = ArtistHydrator::$db->prepare('SELECT `id`, `artist_name` AS `name` FROM `artists` WHERE `artist_name` = ?');
+        $query = ArtistHydrator::$db->prepare('SELECT `id`, `artist_name` AS `name` FROM `artists` WHERE `artist_name` LIKE ?');
         $query->execute([$artistName]);
         $query->setFetchMode(PDO::FETCH_CLASS, Artist::class);
-        return $query->fetch();
+        $artist = $query->fetch();
+        // Catches the case where no name is returned
+        if ($artist) {
+            return $artist;
+        } else {
+            throw new \Exception('Incorrect name');
+        }
     }
 }
