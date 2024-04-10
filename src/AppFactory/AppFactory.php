@@ -11,6 +11,7 @@ use CodersCanine\SongHydrator\SongHydrator;
 use CodersCanine\AlbumHydrator\AlbumHydrator;
 use CodersCanine\ArtistHydrator\ArtistHydrator;
 use Throwable;
+
 header("Access-Control-Allow-Origin: *");
 
 class AppFactory
