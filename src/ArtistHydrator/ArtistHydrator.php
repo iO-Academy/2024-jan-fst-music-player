@@ -19,4 +19,17 @@ class ArtistHydrator
     {
         self::$db = $db;
     }
+    public static function getArtist (string $artistName): Artist
+    {
+        $query = ArtistHydrator::$db->prepare('SELECT `id`, `artist_name` AS `name` FROM `artists` WHERE `artist_name` LIKE ?');
+        $query->execute([$artistName]);
+        $query->setFetchMode(PDO::FETCH_CLASS, Artist::class);
+        $artist = $query->fetch();
+        // Catches the case where no name is returned
+        if ($artist) {
+            return $artist;
+        } else {
+            throw new \Exception('Incorrect name');
+        }
+    }
 }
