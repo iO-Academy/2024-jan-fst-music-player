@@ -12,7 +12,12 @@ class ArtistService
  {
      $artistArray = [];
      $artistProfileArray = [];
-     $artists = ArtistHydrator::getArtists($artistName);
+     if (isset($_GET['name'])){
+         $artists = ArtistHydrator::getArtist($artistName);
+     }
+     else {
+         $artists = ArtistHydrator::getArtists($artistName);
+     }
      foreach ($artists as $artist) {
        $artistAlbums = $albumService->createAlbumProfile($artist->getId(), $songService);
        $artistProfileArray[] = ['name' => $artist->getName(), 'albums' => $artistAlbums];
