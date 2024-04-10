@@ -2,14 +2,13 @@
 
 require_once 'vendor/autoload.php';
 
-header("Access-Control-Allow-Origin: *");
 use CodersCanine\AppFactory\AppFactory;
+header("Access-Control-Allow-Origin: *");
 
 $factory = new AppFactory();
 $factory->createSetUp();
 $artistService = $factory->getArtistService();
 $jsonService = $factory->getJsonService();
-
 
 try {
     if (isset($_GET['name'])){

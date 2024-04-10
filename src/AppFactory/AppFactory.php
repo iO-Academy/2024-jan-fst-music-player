@@ -36,7 +36,6 @@ class AppFactory
             $this->songService = new SongService();
             $this->jsonService = new JsonService();
 
-
         } catch (Throwable) {
             http_response_code(500);
             $errorMessage = ["message" => "Unexpected error"];

@@ -31,7 +31,8 @@ class AlbumService
             $albumProfile = [
                 'name' => $album->getName(),
                 'songs' => $songs,
-                'artwork_url' => $album->getArtwork()];
+                'artwork_url' => $album->getArtwork()
+            ];
             $albumProfileForArtist[] = $albumProfile;
         }
         return $albumProfileForArtist;
