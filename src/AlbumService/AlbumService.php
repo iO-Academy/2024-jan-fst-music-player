@@ -21,4 +21,21 @@ class AlbumService
         }
         return $albumProfileForArtist;
     }
+
+    public function createDetailedAlbumProfile (int $artistId, SongService $songService): array
+    {
+        $discography = AlbumHydrator::getAlbumsByArtist($artistId);
+        $albumProfileForArtist = [];
+        foreach ($discography as $album) {
+            $songs = $songService->createSongProfile($album->getId());
+            $albumProfile = [
+                'name' => $album->getName(),
+                'songs' => $songs,
+                'artwork_url' => $album->getArtwork()];
+            $albumProfileForArtist[] = $albumProfile;
+        }
+        return $albumProfileForArtist;
+    }
+
+
 }

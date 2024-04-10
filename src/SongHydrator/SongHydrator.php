@@ -10,7 +10,7 @@ class SongHydrator
 
     public static function getSongsByAlbum(int $albumId): array
     {
-        $query = SongHydrator::$db->prepare('SELECT `id`, `song_name` AS `name`, `length`, `album_id` AS `albumId` FROM `songs` WHERE `album_id` = ?');
+        $query = SongHydrator::$db->prepare('SELECT `id`, `song_name` AS `name`, `length`, `album_id` AS `albumId`, `play_count`, `is_fav` FROM `songs` WHERE `album_id` = ?');
         $query->execute([$albumId]);
         $query->setFetchMode(PDO::FETCH_CLASS, Song::class);
         return $query->fetchAll();

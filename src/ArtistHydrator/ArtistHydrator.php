@@ -19,7 +19,7 @@ class ArtistHydrator
     {
         self::$db = $db;
     }
-    public static function getArtist (string $artistName): array
+    public static function getArtist (string $artistName): Artist
     {
         $query = ArtistHydrator::$db->prepare('SELECT `id`, `artist_name` AS `name` FROM `artists` WHERE `artist_name` = ?');
         $query->execute([$artistName]);
