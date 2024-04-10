@@ -7,8 +7,8 @@ class Song
     private int $id;
     private string $name;
     private float $length;
-    private int $play_count;
-    private bool $is_fav;
+    private int $playCount;
+    private bool $isFav;
     private int $albumId;
 
     public function getId(): int
@@ -23,12 +23,12 @@ class Song
 
     public function getPlayCount(): int
     {
-        return $this->play_count;
+        return $this->playCount;
     }
 
     public function getFav(): bool
     {
-        return $this->is_fav;
+        return $this->isFav;
     }
 
     public function getLength(): float

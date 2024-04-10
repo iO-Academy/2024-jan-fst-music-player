@@ -1,6 +1,6 @@
 <?php
 
-namespace CodersCanine\Factory;
+namespace CodersCanine\AppFactory;
 
 use CodersCanine\JsonService\JsonService;
 use CodersCanine\ArtistService\ArtistService;
@@ -13,7 +13,7 @@ use CodersCanine\ArtistHydrator\ArtistHydrator;
 use Throwable;
 header("Access-Control-Allow-Origin: *");
 
-class Factory
+class AppFactory
 {
     private ArtistService $artistService;
     private AlbumService $albumService;

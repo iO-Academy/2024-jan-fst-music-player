@@ -3,9 +3,9 @@
 require_once 'vendor/autoload.php';
 
 header("Access-Control-Allow-Origin: *");
-use CodersCanine\Factory\Factory;
+use CodersCanine\AppFactory\AppFactory;
 
-$factory = new Factory();
+$factory = new AppFactory();
 $factory->createSetUp();
 
 

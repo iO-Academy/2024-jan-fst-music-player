@@ -14,7 +14,7 @@ class ArtistService
  public function createSpecificArtistProfile(AlbumService $albumService, SongService $songService, string $artistName): array
  {
      $artist = ArtistHydrator::getArtist($artistName);
-     $artistAlbums = $albumService->createAlbumProfile($artist->getId(), $songService);
+     $artistAlbums = $albumService->createDetailedAlbumProfile($artist->getId(), $songService);
      return ['name' => $artist->getName(), 'albums' => $artistAlbums];
  }
 
