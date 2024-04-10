@@ -7,13 +7,15 @@ use CodersCanine\AppFactory\AppFactory;
 
 $factory = new AppFactory();
 $factory->createSetUp();
+$artistService = $factory->getArtistService();
+$jsonService = $factory->getJsonService();
 
 
 try {
     if (isset($_GET['name'])){
         $artistName = $_GET['name'];
-        $allArtistsArray = $factory->getArtistService()->createSpecificArtistProfile($factory->getAlbumService(), $factory->getSongService(), $artistName);
-        echo $factory->getJsonService()->convertArrayToJson($allArtistsArray);
+        $allArtistsArray = $artistService->createSpecificArtistProfile($factory->getAlbumService(), $factory->getSongService(), $artistName);
+        echo $jsonService->convertArrayToJson($allArtistsArray);
     } else {
         http_response_code(400);
         throw new Exception('No name');
