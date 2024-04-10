@@ -8,7 +8,7 @@ class Song
     private string $name;
     private float $length;
     private int $play_count;
-    private $is_fav;
+    private int $is_fav;
     private int $albumId;
 
     public function getId(): int
@@ -26,7 +26,7 @@ class Song
         return $this->play_count;
     }
 
-    public function getFav()
+    public function getFav(): int
     {
         return $this->is_fav;
     }

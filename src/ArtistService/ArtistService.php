@@ -15,8 +15,7 @@ class ArtistService
         if (isset($_GET['name'])) {
             $artist = ArtistHydrator::getArtist($artistName);
             $artistAlbums = $albumService->createDetailedAlbumProfile($artist->getId(), $songService);
-            $artistProfileArray[] = ['name' => $artist->getName(), 'albums' => $artistAlbums];
-            return $artistProfileArray[0];
+            return ['name' => $artist->getName(), 'albums' => $artistAlbums];
         } else {
             $artists = ArtistHydrator::getArtists($artistName);
             foreach ($artists as $artist) {
