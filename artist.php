@@ -18,4 +18,3 @@ if (count($allArtistsArray) === 0) {
 } else {
     echo $factory->getJsonService()->convertArrayToJson($allArtistsArray);
 }
-
