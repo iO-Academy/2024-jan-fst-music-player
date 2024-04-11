@@ -33,7 +33,7 @@ class SongService
         return $trackList;
     }
 
-    public function createRecentSongsPofile(): array
+    public function createRecentSongsProfile(): array
     {
         $recentSongsProfile = [];
         $recentSongs = songHydrator::getRecentSongs();

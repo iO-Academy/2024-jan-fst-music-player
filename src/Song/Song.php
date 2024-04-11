@@ -10,6 +10,7 @@ class Song
     private int $playCount;
     private bool $isFav;
     private int $albumId;
+    private $timestamp;
 
     public function getId(): int
     {
@@ -19,6 +20,11 @@ class Song
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function getTimestamp()
+    {
+        return $this->timestamp;
     }
 
     public function getPlayCount(): int
