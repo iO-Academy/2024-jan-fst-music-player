@@ -26,8 +26,8 @@ class AppFactory
     public function createSetUp(): void
     {
         try {
-            $this->db = new DatabaseConnector();
-            $this->db = $this->db->connect();
+            $databaseConnector = new DatabaseConnector();
+            $this->db = $databaseConnector->connect();
 
             SongHydrator::setDb($this->db);
             AlbumHydrator::setDb($this->db);
@@ -50,7 +50,7 @@ class AppFactory
         return $this->artistService;
     }
 
-    public function getDb()
+    public function getDb(): PDO
     {
         return $this->db;
     }
