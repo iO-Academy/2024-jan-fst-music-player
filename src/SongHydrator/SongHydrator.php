@@ -20,4 +20,12 @@ class SongHydrator
     {
         self::$db = $db;
     }
+    public static function getRecentSongs(): array
+    {
+        $query = SongHydrator::$db->prepare('SELECT `id`, `song_name` AS `name`, `length`, `play_count` AS `playCount`, 
+       `is_fav` AS `isFav` FROM `songs` ORDER BY `timestamp` DESC LIMIT 3');
+        $query->execute();
+        $query->setFetchMode(PDO::FETCH_CLASS, Song::class);
+        return $query->fetchAll();
+    }
 }
