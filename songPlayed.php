@@ -18,6 +18,3 @@ $factory = new AppFactory();
 $factory->createSetUp();
 
 $songPlayedService->updatePlayCount($data['name'], $data['artist'], $factory->getDb(), $data);
-
-
-
