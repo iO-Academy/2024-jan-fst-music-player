@@ -38,4 +38,19 @@ class AlbumService
         return $albumProfileForArtist;
     }
 
+    public function createTopFiveAlbums (int $artistId, Artist $artist, SongService $songService): array
+    {
+        $discography = AlbumHydrator::getTopFiveAlbums($artistId);
+        $topFiveAlbums= [];
+        foreach ($discography as $album) {
+            $songs = $songService->getTrackList($album->getId());
+            $albumProfile = [
+                'artist'=> $artist,
+                'name' => $album->getName(),
+                'songs' => $songs,
+                'artwork_url' => $album->getArtwork()];
+            $topFiveAlbums[] = $albumProfile;
+        }
+        return $topFiveAlbums;
+    }
 }
