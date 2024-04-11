@@ -30,4 +30,9 @@ class ArtistService
      }
      return $artistArray;
  }
+
+ public function getArtistbyId($artistId): Artist
+ {
+     return ArtistHydrator::getArtist($artistId);
+ }
 }
