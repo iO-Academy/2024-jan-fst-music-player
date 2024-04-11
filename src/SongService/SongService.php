@@ -2,6 +2,8 @@
 
 namespace CodersCanine\SongService;
 
+use CodersCanine\AlbumHydrator\AlbumHydrator;
+use CodersCanine\ArtistHydrator\ArtistHydrator;
 use CodersCanine\SongHydrator\SongHydrator;
 
 class SongService
@@ -29,5 +31,26 @@ class SongService
             ];
         }
         return $trackList;
+    }
+
+    public function createRecentSongsPofile(): array
+    {
+        $recentSongsProfile = [];
+        $recentSongs = songHydrator::getRecentSongs();
+
+        foreach ($recentSongs as $song) {
+            $album = AlbumHydrator::getSpecificAlbum($song->getAlbumId());
+            $artist = ArtistHydrator::getArtistById($album->getArtistId());
+            $songProfile = [
+                "name"=>$song->getName(),
+                "artist"=>$artist->getName(),
+                "length"=>$song->getLength(),
+                "artwork_url"=>$album->getArtwork(),
+                "play_count"=>$song->getPlayCount(),
+                "is_fav"=>$song->getFav()
+            ];
+            $recentSongsProfile[] = $songProfile;
+        }
+        return $recentSongsProfile;
     }
 }
