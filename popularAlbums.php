@@ -2,9 +2,6 @@
 
 require_once 'vendor/autoload.php';
 
-use CodersCanine\DatabaseConnector\DatabaseConnector;
-use CodersCanine\JsonService\JsonService;
-use CodersCanine\SongPlayedService\SongPlayedService;
 use CodersCanine\AppFactory\AppFactory;
 
 header("Access-Control-Allow-Origin: *");
@@ -12,14 +9,9 @@ header("Access-Control-Allow-Headers: *");
 
 $factory = new AppFactory();
 $factory->createSetUp();
-$artistService = $factory->getArtistService();
+$albumService = $factory->getAlbumService();
 $jsonService = $factory->getJsonService();
+$songService = $factory->getSongService();
 
-try {
-    $topFiveAlbumArray = $artistService->getTopFiveAlbums();
-    echo $jsonService->convertArrayToJson($topFiveAlbumArray);
-} catch (Throwable $e) {
-    http_response_code(400);
-    $errorMessage = ["message" => "Unknown artist name"];
-    echo json_encode($errorMessage);
-}
+$topFiveAlbumArray = $albumService->createTopFiveAlbumsProfile($songService);
+echo $jsonService->convertArrayToJson($topFiveAlbumArray);

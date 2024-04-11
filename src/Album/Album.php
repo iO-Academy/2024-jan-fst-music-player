@@ -8,6 +8,7 @@ class Album
     private string $name;
     private string $artwork;
     private int $artistId;
+    private $totalPlayCount;
 
     public function getId(): int
     {

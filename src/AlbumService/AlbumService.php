@@ -3,6 +3,7 @@
 namespace CodersCanine\AlbumService;
 
 use CodersCanine\AlbumHydrator\AlbumHydrator;
+use CodersCanine\ArtistHydrator\ArtistHydrator;
 use CodersCanine\SongService\SongService;
 
 class AlbumService
@@ -38,19 +39,25 @@ class AlbumService
         return $albumProfileForArtist;
     }
 
-    public function createTopFiveAlbums (int $artistId, Artist $artist, SongService $songService): array
+    public function createTopFiveAlbumsProfile (SongService $songService): array
     {
-        $discography = AlbumHydrator::getTopFiveAlbums($artistId);
-        $topFiveAlbums= [];
-        foreach ($discography as $album) {
+        $topFiveAlbums = AlbumHydrator::getTopFiveAlbums();
+        $topFiveAlbumsProfile= [];
+        foreach ($topFiveAlbums as $album) {
             $songs = $songService->getTrackList($album->getId());
+            //find a way to get artist name from the artist ID which is part of the album object
+            //Can get the artist name by making an artist object from the hydrator
+
+            //
+            $artist = ArtistHydrator::getArtist($album->getArtistId());
+
             $albumProfile = [
-                'artist'=> $artist,
+                'artist'=> $artist->getName(),
                 'name' => $album->getName(),
                 'songs' => $songs,
                 'artwork_url' => $album->getArtwork()];
-            $topFiveAlbums[] = $albumProfile;
+            $topFiveAlbumsProfile[] = $albumProfile;
         }
-        return $topFiveAlbums;
+        return $topFiveAlbumsProfile;
     }
 }
