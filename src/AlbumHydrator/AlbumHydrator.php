@@ -3,7 +3,6 @@
 namespace CodersCanine\AlbumHydrator;
 
 use CodersCanine\Album\Album;
-use CodersCanine\ArtistHydrator\ArtistHydrator;
 use PDO;
 
 class AlbumHydrator
