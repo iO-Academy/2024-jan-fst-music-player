@@ -2,6 +2,7 @@
 
 namespace CodersCanine\SongPlayedService;
 
+use CodersCanine\DatabaseConnector\DatabaseConnector;
 use Throwable;
 use PDO;
 
