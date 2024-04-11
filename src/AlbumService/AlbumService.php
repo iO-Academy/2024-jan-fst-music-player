@@ -45,11 +45,7 @@ class AlbumService
         $topFiveAlbumsProfile= [];
         foreach ($topFiveAlbums as $album) {
             $songs = $songService->getTrackList($album->getId());
-            //find a way to get artist name from the artist ID which is part of the album object
-            //Can get the artist name by making an artist object from the hydrator
-
-            //
-            $artist = ArtistHydrator::getArtist($album->getArtistId());
+            $artist = ArtistHydrator::getArtistById($album->getArtistId());
 
             $albumProfile = [
                 'artist'=> $artist->getName(),

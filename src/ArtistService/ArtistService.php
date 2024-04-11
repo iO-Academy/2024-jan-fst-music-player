@@ -13,7 +13,7 @@ class ArtistService
 {
  public function createSpecificArtistProfile(AlbumService $albumService, SongService $songService, string $artistName): array
  {
-     $artist = ArtistHydrator::getArtist($artistName);
+     $artist = ArtistHydrator::getArtistByName($artistName);
      $artistAlbums = $albumService->createDetailedAlbumProfile($artist->getId(), $songService);
      return ['name' => $artist->getName(), 'albums' => $artistAlbums];
  }
@@ -33,6 +33,6 @@ class ArtistService
 
  public function getArtistbyId($artistId): Artist
  {
-     return ArtistHydrator::getArtist($artistId);
+     return ArtistHydrator::getArtistById($artistId);
  }
 }
