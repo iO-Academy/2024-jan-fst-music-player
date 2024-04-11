@@ -3,10 +3,11 @@
 namespace CodersCanine\SongPlayedService;
 
 use Throwable;
+use PDO;
 
 class SongPlayedService
 {
-    public function updatePlayCount($songName, $artistName, $db, $postData) : void
+    public function updatePlayCount(string $songName, string $artistName, PDO $db, array $postData) : void
     {
         try {
             $query = $db->prepare("UPDATE songs
@@ -23,9 +24,6 @@ class SongPlayedService
             http_response_code(400);
             $errorMessage = ['message'=>'Invalid song data', 'data'=>$postData];
             echo json_encode($errorMessage);
-            echo $e->getMessage();
         }
-
-
     }
 }

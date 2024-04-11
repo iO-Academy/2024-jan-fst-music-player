@@ -11,6 +11,7 @@ use CodersCanine\SongHydrator\SongHydrator;
 use CodersCanine\AlbumHydrator\AlbumHydrator;
 use CodersCanine\ArtistHydrator\ArtistHydrator;
 use Throwable;
+use PDO;
 
 header("Access-Control-Allow-Origin: *");
 
@@ -20,7 +21,7 @@ class AppFactory
     private AlbumService $albumService;
     private SongService $songService;
     private JsonService $jsonService;
-    private $db;
+    private PDO $db;
 
     public function createSetUp(): void
     {
