@@ -3,6 +3,7 @@
 namespace CodersCanine\AlbumHydrator;
 
 use CodersCanine\Album\Album;
+use CodersCanine\ArtistHydrator\ArtistHydrator;
 use PDO;
 
 class AlbumHydrator
@@ -14,6 +15,14 @@ class AlbumHydrator
         $query->execute([$artistId]);
         $query->setFetchMode(PDO::FETCH_CLASS, Album::class);
         return $query->fetchAll();
+    }
+
+    public static function getSpecificAlbum(int $albumId): Album
+    {
+        $query = AlbumHydrator::$db->prepare('SELECT `id`, `album_name` AS `name`, `artwork_url` AS `artwork`, `artist_id` AS `artistId` FROM `albums` WHERE `id` = ?');
+        $query->execute([$albumId]);
+        $query->setFetchMode(PDO::FETCH_CLASS, Album::class);
+        return $query->fetch();
     }
 
     public static function setDb(PDO $db): void
