@@ -20,16 +20,17 @@ class AppFactory
     private AlbumService $albumService;
     private SongService $songService;
     private JsonService $jsonService;
+    private $db;
 
     public function createSetUp(): void
     {
         try {
-            $db = new DatabaseConnector();
-            $db = $db->connect();
+            $this->db = new DatabaseConnector();
+            $this->db = $this->db->connect();
 
-            SongHydrator::setDb($db);
-            AlbumHydrator::setDb($db);
-            ArtistHydrator::setDb($db);
+            SongHydrator::setDb($this->db);
+            AlbumHydrator::setDb($this->db);
+            ArtistHydrator::setDb($this->db);
 
             $this->artistService = new ArtistService();
             $this->albumService = new AlbumService();
@@ -48,6 +49,10 @@ class AppFactory
         return $this->artistService;
     }
 
+    public function getDb()
+    {
+        return $this->db;
+    }
     public function getAlbumService(): AlbumService
     {
         return $this->albumService;

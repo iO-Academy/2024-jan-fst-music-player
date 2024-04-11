@@ -5,20 +5,19 @@ require_once 'vendor/autoload.php';
 use CodersCanine\DatabaseConnector\DatabaseConnector;
 use CodersCanine\JsonService\JsonService;
 use CodersCanine\SongPlayedService\SongPlayedService;
+use CodersCanine\AppFactory\AppFactory;
 
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Header: *");
+header("Access-Control-Allow-Headers: *");
 
 $songPlayedService = new SongPlayedService;
+$json = file_get_contents('php://input');
+$data = json_decode($json, true);
 
-try {
-    $db = new DatabaseConnector();
-    $db = $db->connect();
-} catch (Throwable) {
-    http_response_code(400);
-    $errorMessage = ['message' => 'Unexpected error', 'data' => $_POST];
-}
+$factory = new AppFactory;
+$factory->createSetUp();
 
-$songPlayedService->updatePlayCount($_POST['name'], $_POST['artist'], $db, $_POST);
+$songPlayedService->updatePlayCount($data['name'], $data['artist'], $factory->getDb(), $data);
+
 
 
