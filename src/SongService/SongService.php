@@ -39,7 +39,7 @@ class SongService
         $recentSongs = songHydrator::getRecentSongs();
 
         foreach ($recentSongs as $song) {
-            $album = AlbumHydrator::getSpecificAlbum($song->getAlbumId());
+            $album = AlbumHydrator::getAlbumById($song->getAlbumId());
             $artist = ArtistHydrator::getArtistById($album->getArtistId());
             $songProfile = [
                 "name"=>$song->getName(),
