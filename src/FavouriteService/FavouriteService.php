@@ -28,7 +28,7 @@ class FavouriteService
                 $successMessage = ['message'=>'Successfully unfavourited song.'];
                 echo json_encode($successMessage);
             }
-        } catch (Throwable $e) {
+        } catch (Throwable) {
             http_response_code(400);
             $errorMessage = ['message'=>'Invalid song data', 'data'=>$postData];
             echo json_encode($errorMessage);
