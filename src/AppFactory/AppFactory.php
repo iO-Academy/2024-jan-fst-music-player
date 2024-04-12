@@ -5,11 +5,13 @@ namespace CodersCanine\AppFactory;
 use CodersCanine\JsonService\JsonService;
 use CodersCanine\ArtistService\ArtistService;
 use CodersCanine\AlbumService\AlbumService;
+use CodersCanine\SongPlayedService\SongPlayedService;
 use CodersCanine\SongService\SongService;
 use CodersCanine\DatabaseConnector\DatabaseConnector;
 use CodersCanine\SongHydrator\SongHydrator;
 use CodersCanine\AlbumHydrator\AlbumHydrator;
 use CodersCanine\ArtistHydrator\ArtistHydrator;
+use CodersCanine\FavouriteService\FavouriteService;
 use Throwable;
 use PDO;
 
@@ -22,6 +24,8 @@ class AppFactory
     private SongService $songService;
     private JsonService $jsonService;
     private PDO $db;
+    private FavouriteService $favouriteService;
+    private SongPlayedService $songPlayedService;
 
     public function createSetUp(): void
     {
@@ -37,6 +41,8 @@ class AppFactory
             $this->albumService = new AlbumService();
             $this->songService = new SongService();
             $this->jsonService = new JsonService();
+            $this->favouriteService = new FavouriteService();
+            $this->songPlayedService = new SongPlayedService();
 
         } catch (Throwable) {
             http_response_code(500);
@@ -67,5 +73,15 @@ class AppFactory
     public function getJsonService(): JsonService
     {
         return $this->jsonService;
+    }
+
+    public function getFavouriteService(): FavouriteService
+    {
+        return $this->favouriteService;
+    }
+
+    public function getSongPlayedService(): SongPlayedService
+    {
+        return $this->songPlayedService;
     }
 }

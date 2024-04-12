@@ -12,6 +12,6 @@ $data = json_decode($json, true);
 
 $factory = new AppFactory();
 $factory->createSetUp();
-$songPlayedService = $factory->getSongPlayedService();
+$favouriteService = $factory->getFavouriteService();
 
-$songPlayedService->updatePlayCount($data['name'], $data['artist'], $factory->getDb(), $data);
+$favouriteService->updateIsFav($data['name'], $data['artist'], $factory->getDb(), $data);
