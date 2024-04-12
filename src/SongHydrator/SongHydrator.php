@@ -40,11 +40,11 @@ class SongHydrator
         return $query->fetch();
     }
 
-    public static function getSongsBySearch(string $songName): array
+    public static function getSongsBySearch(string $searchData): array
     {
         $query = SongHydrator::$db->prepare('SELECT `id`, `song_name` AS `name`, `length`, `play_count` AS `playCount`, `is_fav` AS `isFav` FROM `songs`
                                                     WHERE `song_name` LIKE % ? %');
-        $query->execute([$songName]);
+        $query->execute([$searchData]);
         $query->setFetchMode(PDO::FETCH_CLASS, Song::class);
         return $query->fetchAll();
     }
