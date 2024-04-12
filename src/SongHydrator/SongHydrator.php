@@ -39,4 +39,14 @@ class SongHydrator
         $query->setFetchMode(PDO::FETCH_CLASS, Song::class);
         return $query->fetch();
     }
+
+    public static function getSearchedSongs(string $searchData): array
+    {
+        $query = SongHydrator::$db->prepare("SELECT `id`, `song_name` AS `name`, `length`, `album_id` AS `albumId`, `play_count` AS `playCount`, `is_fav` AS `isFav` FROM `songs`
+                                                    WHERE `song_name` LIKE '%" . $searchData . "%'
+                                                    LIMIT 10");
+        $query->execute();
+        $query->setFetchMode(PDO::FETCH_CLASS, Song::class);
+        return $query->fetchAll();
+    }
 }

@@ -37,9 +37,9 @@ class Song
         return $this->isFav;
     }
 
-    public function getLength(): float
+    public function getLength(): string
     {
-        return $this->length;
+        return number_format($this->length, '2', '.', '');
     }
 
     public function getAlbumId(): int
