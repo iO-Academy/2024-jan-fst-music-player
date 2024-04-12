@@ -25,7 +25,7 @@ class SongService
         foreach ($songs as $song) {
             $trackList[] = [
                 "name" => $song->getName(),
-                "length" => number_format($song->getLength(),2,'.',''),
+                "length" => $song->getLength(),
                 "play_count" => $song->getPlayCount(),
                 "is_fav" => $song->getFav()
             ];
@@ -44,7 +44,7 @@ class SongService
             $songProfile = [
                 "name"=>$song->getName(),
                 "artist"=>$artist->getName(),
-                "length"=>number_format($song->getLength(),2,'.',''),
+                "length"=>$song->getLength(),
                 "artwork_url"=>$album->getArtwork(),
                 "is_fav"=>$song->getFav()
             ];
@@ -64,7 +64,7 @@ class SongService
             $songProfile = [
                 "name" => $song->getName(),
                 "artist" => $artist->getName(),
-                "length" => number_format($song->getLength(),2,'.',''),
+                "length" => $song->getLength(),
                 "artwork_url" => $album->getArtwork(),
                 "play_count" => $song->getPlayCount(),
                 "is_fav" => $song->getFav()

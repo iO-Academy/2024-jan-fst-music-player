@@ -21,7 +21,7 @@ try {
         http_response_code(400);
         throw new Exception('{"message": "Invalid search data", "data": []}');
     }
-} catch (Throwable $e) {
+} catch (Throwable) {
     http_response_code(400);
     $errorMessage = ["message" => "Invalid search data", "data" => []];
     echo json_encode($errorMessage);
