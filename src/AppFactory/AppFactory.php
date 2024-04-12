@@ -11,6 +11,7 @@ use CodersCanine\DatabaseConnector\DatabaseConnector;
 use CodersCanine\SongHydrator\SongHydrator;
 use CodersCanine\AlbumHydrator\AlbumHydrator;
 use CodersCanine\ArtistHydrator\ArtistHydrator;
+use CodersCanine\FavouriteService\FavouriteService;
 use Throwable;
 use PDO;
 

@@ -31,7 +31,7 @@ class SongHydrator
 
     public static function getSongByName(string $songName, string $artistName): Song
     {
-        $query = SongHydrator::$db->prepare('SELECT `id`, `song_name` AS `name`, `length`, `album_id` AS `albumId`, `is_fav` AS `isFav`, `play_count` AS `playCount` FROM `songs` 
+        $query = SongHydrator::$db->prepare('SELECT songs.`id`, `song_name` AS `name`, `length`, `album_id` AS `albumId`, `is_fav` AS `isFav`, `play_count` AS `playCount` FROM `songs` 
                                                     INNER JOIN albums ON albums.id = album_id
                                                     INNER JOIN artists ON artists.id = artist_id
                                                     WHERE `song_name` = ? AND `artist_name` = ?');
