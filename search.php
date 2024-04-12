@@ -14,7 +14,7 @@ $jsonService = $factory->getJsonService();
 
 try {
     if (isset($_GET['name'])) {
-        $searchData= $_GET['name'];
+        $searchData= trim($_GET['name']);
         $searchedSongArray = $songService->createSearchProfile($searchData);
         echo $jsonService->convertArrayToJson($searchedSongArray);
     } else {
@@ -25,6 +25,5 @@ try {
     http_response_code(400);
     $errorMessage = ["message" => "Invalid search data", "data" => []];
     echo json_encode($errorMessage);
-    echo $e->getMessage();
 }
 
