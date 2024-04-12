@@ -46,7 +46,6 @@ class SongService
                 "artist"=>$artist->getName(),
                 "length"=>$song->getLength(),
                 "artwork_url"=>$album->getArtwork(),
-                "play_count"=>$song->getPlayCount(),
                 "is_fav"=>$song->getFav()
             ];
             $recentSongsProfile[] = $songProfile;
