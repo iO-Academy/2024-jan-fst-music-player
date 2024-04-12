@@ -16,7 +16,7 @@ class AlbumHydrator
         return $query->fetchAll();
     }
 
-    public static function getSpecificAlbum(int $albumId): Album
+    public static function getAlbumById(int $albumId): Album
     {
         $query = AlbumHydrator::$db->prepare('SELECT `id`, `album_name` AS `name`, `artwork_url` AS `artwork`, `artist_id` AS `artistId` FROM `albums` WHERE `id` = ?');
         $query->execute([$albumId]);
