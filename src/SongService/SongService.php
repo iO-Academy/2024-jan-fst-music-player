@@ -53,4 +53,25 @@ class SongService
         }
         return $recentSongsProfile;
     }
+
+    public function createSearchProfile(string $searchData): array
+    {
+        $searchProfile = [];
+        $searchSongs = songHydrator::getSearchedSongs($searchData);
+
+        foreach ($searchSongs as $song) {
+            $album = AlbumHydrator::getAlbumById($song->getAlbumId());
+            $artist = ArtistHydrator::getArtistById($album->getArtistId());
+            $songProfile = [
+                "name" => $song->getName(),
+                "artist" => $artist->getName(),
+                "length" => $song->getLength(),
+                "artwork_url" => $album->getArtwork(),
+                "play_count" => $song->getPlayCount(),
+                "is_fav" => $song->getFav()
+            ];
+            $searchProfile[] = $songProfile;
+        }
+        return $searchProfile;
+    }
 }
