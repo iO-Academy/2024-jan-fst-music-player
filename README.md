@@ -51,13 +51,11 @@ npm start
 # Authors
 
 John Harrison - [@JBHarrison5](https://github.com/JBHarrison5)  
-Harry Keeling - [@HarryKilo](https://github.com/HarryKilo)   
 Richard Gabb - [@richardjgabb](https://github.com/richardjgabb)  
 Max Hamilton - [@maxeh987](https://github.com/maxeh987)  
 Liz Hartley - [@elizabeth-hartley](https://github.com/elizabeth-hartley)  
 Izayah Jordan - [@2naCan](https://github.com/2naCan)  
 Sara Berggren - [@AnnaSaraBerggren](https://github.com/AnnaSaraBerggren)  
-Safia Fareed - [@SafiaFx](https://github.com/SafiaFx)  
 
 # Links
 Live App - ??????
