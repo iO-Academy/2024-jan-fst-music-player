@@ -1,12 +1,14 @@
 # Description
 
 This project created the back end 'API' for a music player app. It extracts artist, album and song data from a mySQL database and returns the required JSON to integrate with a supplied front end.
-By tracking the number of times a song was played, the most popular albums can be displayed. Additionally functionality includes the users ability to favourite a song and search for a specific song.
+By tracking the number of times a song was played, the most popular albums can be displayed. Additional functionality includes the users ability to favourite a song and search for a specific song.
 The project was built in an OOP style using PHP.
 
 # Getting Started
 
 **Installing**
+
+Ensure you have the correct docker image by following the guide in [this]https://github.com/iO-Academy/docker-image repo
 
 Clone this repo and rename using:
 
@@ -14,7 +16,7 @@ Clone this repo and rename using:
 git clone git@github.com:iO-Academy/2024-jan-fst-music-player.git music-player-api
 ```
 
-Install the database ```music_2024-04-09.sql``` into a database called music
+Import the database ```music_2024-04-09.sql``` into a database called music
 
 Ensure database host, username and password details are correct in:
 
@@ -41,6 +43,7 @@ git checkout story-8
 ```
 
 Run the installer and start
+
 ```
 npm install
 ```
