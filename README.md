@@ -450,7 +450,7 @@ Richard Gabb - [@richardjgabb](https://github.com/richardjgabb)
 Max Hamilton - [@maxeh987](https://github.com/maxeh987)  
 Liz Hartley - [@elizabeth-hartley](https://github.com/elizabeth-hartley)  
 Izayah Jordan - [@2naCan](https://github.com/2naCan)  
-Sara Berggren - [@AnnaSaraBerggren](https://github.com/AnnaSaraBerggren)  
+Sara Berggren - [@ASBgren](https://github.com/ASBgren)  
 
 # Links
 Live API - [LINK](https://2024-johnh.dev.io-academy.uk/music-player-api/)  
